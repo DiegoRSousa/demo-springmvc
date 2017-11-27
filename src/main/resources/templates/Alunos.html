@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+<meta name="viewport" content="width=device-width" />
+<title>Alunos</title>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h1 class="panel-title">Cadastro de alunos</h1>	
+		</div>
+		<div class="panel-body">
+			<form class="form-inline" th:action="@{/alunos}" method="POST" th:object="${aluno}">
+				<label>Nome:</label>
+				<input class="form-control" type="text" th:field="*{nome}"/>
+				<label>Email:</label>
+				<input class="form-control" type="text" th:field="*{email}"/>
+				<label>Período</label>
+				<input class="form-control" type="number" th:field="*{periodo}"/>
+				<button class="btn btn-primary" type="submit">Adicionar</button>
+			</form>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Periodo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aluno : ${alunos}">
+					<td th:text="${aluno.nome}"></td>
+					<td th:text="${aluno.email}"></td>
+					<td th:text="${aluno.periodo}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
